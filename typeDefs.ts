@@ -12,6 +12,10 @@ export const typeDefs = gql`
     getListArticle: [Article]
     getArticle(id:String): Article
   }
+  type Message {
+    code: Int,
+    message: String
+  }
 
   input ArticleInput {
     title:String,
@@ -20,6 +24,7 @@ export const typeDefs = gql`
   }
   
   type Mutation {
-    createAricle(article:ArticleInput): Article
+    createArticle(article:ArticleInput): Article
+    deleteArticle(id:String) : Message
   }
 `;

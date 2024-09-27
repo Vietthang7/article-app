@@ -18,11 +18,23 @@ export const resolvers = {
     }
   },
   Mutation: {
-    createAricle: async (_, args) => {
+    createArticle: async (_, args) => {
       const { article } = args;
       const record = new Article(article);
       await record.save();
       return record;
+    },
+    deleteArticle: async (_, args) => {
+      const { id } = args;
+      await Article.updateOne({
+        _id: id
+      }, {
+        deleted: true
+      });
+      return {
+        code: 200,
+        message: "Xóa thành công"
+      }
     }
   }
 };
