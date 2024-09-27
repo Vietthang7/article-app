@@ -7,8 +7,19 @@ export const typeDefs = gql`
     avatar:String,
     description:String
   }
+
   type Query {
-    getListArticle:[Article]
-    getArticle(id:String):Article
+    getListArticle: [Article]
+    getArticle(id:String): Article
+  }
+
+  input ArticleInput {
+    title:String,
+    avatar:String,
+    description:String
+  }
+  
+  type Mutation {
+    createAricle(article:ArticleInput): Article
   }
 `;

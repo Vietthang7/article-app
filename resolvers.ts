@@ -1,3 +1,4 @@
+import { create } from "domain";
 import Article from "./models/article.model";
 export const resolvers = {
   Query: {
@@ -14,6 +15,14 @@ export const resolvers = {
         deleted: false
       });
       return article;
+    }
+  },
+  Mutation: {
+    createAricle: async (_, args) => {
+      const { article } = args;
+      const record = new Article(article);
+      await record.save();
+      return record;
     }
   }
 };
