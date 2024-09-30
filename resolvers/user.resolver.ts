@@ -2,7 +2,7 @@ import { register } from "module";
 import { generateRandomString } from "../helpers/generate.helper";
 import User from "../models/user.model";
 import md5 from "md5";
-import { emit } from "process";
+import { argv, emit } from "process";
 export const resolversUser = {
   Mutation: {
     register: async (_, args) => {
@@ -33,6 +33,35 @@ export const resolversUser = {
         token: newUser.token,
         code: 200,
         message: "Đăng ký thành công!"
+      };
+    },
+    login: async (_, args) => {
+      const { user } = args;
+      const email: string = user.email;
+      const password: string = user.password;
+      const existUser = await User.findOne({
+        email: email,
+        deleted: false
+      });
+      if (!existUser) {
+        return {
+          code: 400,
+          message: "Email không tồn tại!"
+        };
+      }
+      if (md5(password) != existUser.password) {
+        return {
+          code: 400,
+          message: "Sai mật khẩu!"
+        };
+      }
+      return {
+        id: existUser.id,
+        fullName: existUser.fullName,
+        email: existUser.email,
+        token: existUser.token,
+        code: 200,
+        message: "Đăng nhập thành công!"
       };
     }
   }
