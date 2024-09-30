@@ -14,7 +14,9 @@ export const typeDefsArticle = gql`
   type Query {
     getListArticle(
       sortKey:String,
-      sortValue:String
+      sortValue:String,
+      limitItems:Int,
+      page:Int
     ): [Article],
     getArticle(id:String): Article
   }
