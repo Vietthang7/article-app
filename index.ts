@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import { connectDatabase } from "./config/database";
 import { ApolloServer } from "apollo-server-express";
-import { typeDefs } from "./typeDefs";
+import { typeDefs } from "./typeDefs/index.typeDef";
 import { resolvers } from "./resolvers";
 const startServer = async () => {
   connectDatabase();
