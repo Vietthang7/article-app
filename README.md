@@ -11,7 +11,7 @@ npm install
 npm start  
 Để test dự án:  
 Truy cập:  
-http://localhost:3000/graphql
+http://localhost:3000/graphql  
 Lệnh test:  
 Endpoint:  http://localhost:3000/graphql  
 Subscriptions:  
