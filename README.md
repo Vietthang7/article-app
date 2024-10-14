@@ -12,10 +12,18 @@ npm start
 Để test dự án:  
 Truy cập:  
 http://localhost:3000/graphql  
-Lệnh test:  
+Cấu hình:  
 Endpoint:  http://localhost:3000/graphql  
 Subscriptions:  
-ws://localhost:3000/graphql
+ws://localhost:3000/graphql  
+Lệnh:  
+query {
+  getListArticle(
+    keyword: "test"
+  ) {
+    title
+  }
+}
 ## Liên hệ
 Bạn có thể liên hệ qua email:  
 nguyenvietthang12092004@gmail.com
